@@ -1,6 +1,7 @@
 package com.practical.webservices.restfulwebservices.helloWorld;
 
 
+import com.practical.webservices.restfulwebservices.User.RecursiveBean;
 import com.practical.webservices.restfulwebservices.User.User;
 import com.practical.webservices.restfulwebservices.User.UserDaoService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,9 +19,11 @@ public class UserResource {
     @Autowired
     private UserDaoService userDaoService;
 
+    @Autowired
+    private RecursiveBean recursiveBean;
+
     @GetMapping(path = "/users")
     public List<User> retrievedAllUsers() {
-        userDaoService.readHtmlDocument();
         return userDaoService.findAll();
     }
 

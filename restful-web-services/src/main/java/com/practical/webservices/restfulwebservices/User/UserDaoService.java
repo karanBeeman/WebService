@@ -44,10 +44,4 @@ public class UserDaoService {
         return null;
     }
 
-    public void readHtmlDocument() {
-
-        File input = new File("/tmp/input.html");
-        Document doc = Jsoup.parse(input, "UTF-8");
-
-    }
 }
