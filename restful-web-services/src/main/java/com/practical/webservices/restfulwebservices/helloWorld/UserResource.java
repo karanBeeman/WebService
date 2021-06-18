@@ -1,14 +1,11 @@
 package com.practical.webservices.restfulwebservices.helloWorld;
 
 
-import com.practical.webservices.restfulwebservices.User.RecursiveBean;
-import com.practical.webservices.restfulwebservices.User.User;
-import com.practical.webservices.restfulwebservices.User.UserDaoService;
+import com.practical.webservices.restfulwebservices.User.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
-import org.springframework.web.util.UriComponents;
 
 import java.net.URI;
 import java.util.List;
@@ -21,6 +18,9 @@ public class UserResource {
 
     @Autowired
     private RecursiveBean recursiveBean;
+
+    @Autowired
+    private CustomCompareService customCompareService;
 
     @GetMapping(path = "/users")
     public List<User> retrievedAllUsers() {
@@ -43,4 +43,16 @@ public class UserResource {
 
        return ResponseEntity.created(loc).build();
     }
+
+    @GetMapping(path = "/naturalCompareTo")
+    public List<User> CompareToSort() {
+       List<User> ascendingOrder = userDaoService.compareToMethod();
+       return ascendingOrder;
+    }
+
+    @GetMapping(path = "/customSort")
+    public List<CustomCompareByComparator> customSort() {
+        return customCompareService.customSortMethod();
+    }
+
 }

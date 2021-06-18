@@ -2,7 +2,7 @@ package com.practical.webservices.restfulwebservices.User;
 
 import java.util.Date;
 
-public class User {
+public class User implements Comparable<User> {
 
     private String name;
 
@@ -47,5 +47,13 @@ public class User {
                 ", id='" + id + '\'' +
                 ", dob='" + dob + '\'' +
                 '}';
+    }
+
+    @Override
+    public int compareTo(User user) {
+        // 1 - This particular object is greater than object we're comparing against(User user)
+        //0 - This particular object is equal to object we're comparing against(User user)
+        //-1 - This particular object is less than object we're comparing against(User user)
+        return this.name.compareTo(user.name);
     }
 }

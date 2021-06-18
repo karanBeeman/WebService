@@ -5,6 +5,7 @@ import org.w3c.dom.Document;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
@@ -44,4 +45,8 @@ public class UserDaoService {
         return null;
     }
 
+    public List<User> compareToMethod() {
+      Collections.sort(users);
+      return users;
+    }
 }
